@@ -10,6 +10,10 @@ public class ShootingCamera : Singleton<ShootingCamera> {
 		_mainCamera = this.GetComponent<Camera> ();
 	}
 
+	/// <summary>
+	/// 画面の左上を返す.
+	/// </summary>
+	/// <returns>The screen top left.</returns>
 	public Vector3 getScreenTopLeft() {
 		// 画面の左上を取得
 		Vector3 topLeft = _mainCamera.ScreenToWorldPoint (Vector3.zero);
@@ -18,6 +22,10 @@ public class ShootingCamera : Singleton<ShootingCamera> {
 		return topLeft;
 	}
 
+	/// <summary>
+	/// 画面の右下を返す.
+	/// </summary>
+	/// <returns>The screen bottom right.</returns>
 	public Vector3 getScreenBottomRight() {
 		// 画面の右下を取得
 		Vector3 bottomRight = _mainCamera.ScreenToWorldPoint (new Vector3(Screen.width, Screen.height, 0.0f));
