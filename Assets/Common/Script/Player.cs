@@ -28,9 +28,15 @@ public class Player : MonoBehaviour {
 	/// 移動
 	/// </summary>
 	void Move(Vector3 moveVector) {
-		Vector3 prePosition = this.gameObject.transform.position + moveVector * moveSpeed;
+		Vector3 prePostion = moveVector * moveSpeed + myTransform.position;
+		Vector3 newPosition = Vector3.zero;
+		Vector3 screenTopLeftPosition = ShootingCamera.Instance.getScreenTopLeft ();
+		Vector3 screenBottomDownPosition = ShootingCamera.Instance.getScreenBottomRight ();
 
-		myTransform.position = prePosition;
+		newPosition.x = Mathf.Clamp (prePostion.x, screenTopLeftPosition.x, screenBottomDownPosition.x);
+		newPosition.y = Mathf.Clamp (prePostion.y, screenBottomDownPosition.y, screenTopLeftPosition.y);
+
+		myTransform.position = newPosition;
 
 	}
 }
